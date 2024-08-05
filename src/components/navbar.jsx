@@ -1,7 +1,7 @@
 import { coinContext } from "./CoinContext";
 import { useContext } from "react";
 export function Navbar() {
-  const { setCurrency, currency } = useContext(coinContext);
+  const { setCurrency, currency, allCoins } = useContext(coinContext);
 
   function currencyHandler(e) {
     switch (e.target.value) {
