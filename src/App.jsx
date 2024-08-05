@@ -4,7 +4,7 @@ import { MainContent } from "./components/mainContenst";
 
 function App() {
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-x-hidden">
       <Navbar />
       <MainContent />
     </div>
