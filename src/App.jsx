@@ -1,6 +1,8 @@
 import "./css/App.css";
 import { Navbar } from "./components/navbar";
-import { MainContent } from "./components/mainContenst";
+import { MainContent } from "./components/mainContent";
+import { useContext } from "react";
+import { coinContext } from "./components/CoinContext";
 
 function App() {
   return (

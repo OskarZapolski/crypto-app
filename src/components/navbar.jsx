@@ -1,7 +1,27 @@
+import { coinContext } from "./CoinContext";
+import { useContext } from "react";
 export function Navbar() {
+  const { setCurrency, currency } = useContext(coinContext);
+
+  function currencyHandler(e) {
+    switch (e.target.value) {
+      case "usd":
+        setCurrency({ name: "usd", symbol: "$" });
+        break;
+      case "pln":
+        setCurrency({ name: "pln", symbol: "zł" });
+        break;
+      case "eur":
+        setCurrency({ name: "eur", symbol: "€" });
+        break;
+      default:
+        setCurrency({ name: "usd", symbol: "$" });
+        break;
+    }
+  }
   return (
     <>
-      <div className="w-screen h-1/5 bg-gradient-to-r from-blue-800 to-violet-700 flex justify-between items-center">
+      <div className="w-screen h-1/5 bg-gradient-to-r from-blue-800/90 to-violet-700/90 flex justify-between items-center">
         <img
           src="cryptocurrency-logo.png"
           alt=""
@@ -12,6 +32,7 @@ export function Navbar() {
             name=""
             id=""
             className="bg-transparent text-white text-2xl border-white border-solid border-2 rounded-lg"
+            onChange={currencyHandler}
           >
             <option value="usd" className="bg-black">
               USD
