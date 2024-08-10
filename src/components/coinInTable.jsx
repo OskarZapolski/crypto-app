@@ -1,5 +1,7 @@
 import { coinContext } from "./CoinContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { CoinCLickedContext } from "./mainContent";
+import { useNavigate } from "react-router-dom";
 
 export function CoinInTable({
   number,
@@ -9,12 +11,23 @@ export function CoinInTable({
   lowPrice,
   highPrice,
 }) {
+  const nav = useNavigate();
   const { currency } = useContext(coinContext);
+  const { isCoinClicked, setIsCoinClicked } = useContext(CoinCLickedContext);
   return (
     <tr className="text-center ">
       <td>{number}</td>
-      <td className="flex justify-center">
-        <img src={logo} alt="" className="w-1/3" />
+      <td
+        className="flex justify-center"
+        onClick={() => {
+          setIsCoinClicked({
+            isClicked: true,
+            coinObject: { name, logo, currPrice },
+          });
+          nav(`/${name}`);
+        }}
+      >
+        <img src={logo} alt="" className="w-1/3 cursor-pointer" />
       </td>
       <td>{name}</td>
       <td>
