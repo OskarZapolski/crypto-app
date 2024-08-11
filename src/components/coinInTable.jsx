@@ -10,6 +10,8 @@ export function CoinInTable({
   currPrice,
   lowPrice,
   highPrice,
+  symbol,
+  id,
 }) {
   const nav = useNavigate();
   const { currency } = useContext(coinContext);
@@ -22,7 +24,7 @@ export function CoinInTable({
         onClick={() => {
           setIsCoinClicked({
             isClicked: true,
-            coinObject: { name, logo, currPrice },
+            coinObject: { name, logo, currPrice, symbol, id },
           });
           nav(`/${name}`);
         }}

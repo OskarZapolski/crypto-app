@@ -6,7 +6,7 @@ export function CoinTable() {
   const { allCoins } = useContext(coinContext);
 
   const [coinsToDisplay, setCoinsToDisplay] = useState(allCoins);
-  const [displayedCoins, setDisplayedCoins] = useState();
+  const [displayedCoins, setDisplayedCoins] = useState([]);
 
   const inputRef = useRef();
 
@@ -17,16 +17,22 @@ export function CoinTable() {
         return (
           <CoinInTable
             number={coin.market_cap_rank}
-            name={coin.id}
+            name={coin.name}
             logo={coin.image}
             currPrice={coin.current_price}
             lowPrice={coin.low_24h}
             highPrice={coin.high_24h}
+            symbol={coin.symbol}
+            id={coin.id}
           />
         );
       })
     );
   }, [coinsToDisplay]);
+
+  useEffect(() => {
+    setCoinsToDisplay(allCoins);
+  }, [allCoins]);
 
   function searchHandler() {
     setCoinsToDisplay(
@@ -36,27 +42,29 @@ export function CoinTable() {
 
   return (
     <>
-      <div className="w-screen flex justify-center items-center pt-12">
-        <input
-          placeholder="search"
-          type="search"
-          className="border-none focus:outline-none rounded-xl text-xl p-2 w-3/5"
-          onChange={searchHandler}
-          ref={inputRef}
-        />
-      </div>
-      <div className="w-screen flex justify-center">
-        <table className="w-4/5 text-white mt-10 bg-white/10 rounded-xl p-5  border-separate border-spacing-y-7 text-xl font-sans">
-          <tr>
-            <th>Number</th>
-            <th>Logo</th>
-            <th>Name</th>
-            <th>Current price</th>
-            <th>Lowest price 24h</th>
-            <th>Highest price 24h</th>
-          </tr>
-          {displayedCoins}
-        </table>
+      <div className=" w-screen bg-gradient-to-r from-blue-800 to-violet-700 h-fit pb-52">
+        <div className="w-screen flex justify-center items-center pt-12">
+          <input
+            placeholder="search"
+            type="search"
+            className="border-none focus:outline-none rounded-xl text-xl p-2 w-3/5"
+            onChange={searchHandler}
+            ref={inputRef}
+          />
+        </div>
+        <div className="w-screen flex justify-center">
+          <table className="w-4/5 text-white mt-10 bg-white/10 rounded-xl p-5  border-separate border-spacing-y-7 text-xl font-sans">
+            <tr>
+              <th>Number</th>
+              <th>Logo</th>
+              <th>Name</th>
+              <th>Current price</th>
+              <th>Lowest price 24h</th>
+              <th>Highest price 24h</th>
+            </tr>
+            {displayedCoins}
+          </table>
+        </div>
       </div>
     </>
   );

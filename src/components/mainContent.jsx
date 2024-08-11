@@ -12,19 +12,25 @@ export function MainContent() {
   });
   const value = { isCoinClicked, setIsCoinClicked };
   return (
-    <div className=" w-screen bg-gradient-to-r from-blue-800 to-violet-700 h-fit pb-52">
-      <BrowserRouter>
-        <CoinCLickedContext.Provider value={value}>
-          <Routes>
-            <Route exact path="/" element={<CoinTable />} />
-            <Route
-              exact
-              path={`/${isCoinClicked.coinObject.name}`}
-              element={<CoinInfo />}
-            />
-          </Routes>
-        </CoinCLickedContext.Provider>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <CoinCLickedContext.Provider value={value}>
+        <Routes>
+          <Route exact path="/" element={<CoinTable />} />
+          <Route
+            exact
+            path={`/${isCoinClicked.coinObject.name}`}
+            element={
+              <CoinInfo
+                name={isCoinClicked.coinObject.name}
+                logo={isCoinClicked.coinObject.logo}
+                symbol={isCoinClicked.coinObject.symbol}
+                currPrice={isCoinClicked.coinObject.currPrice}
+                id={isCoinClicked.coinObject.id}
+              />
+            }
+          />
+        </Routes>
+      </CoinCLickedContext.Provider>
+    </BrowserRouter>
   );
 }
