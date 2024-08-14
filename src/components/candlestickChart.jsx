@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
+
 export function CandlestickChart({ historicalData }) {
   const [data, setData] = useState([["Date", "Open", "High", "Low", "Close"]]);
+  console.log(historicalData);
 
   useEffect(() => {
     let dataCopy = [["Date", "Open", "High", "Low", "Close"]];

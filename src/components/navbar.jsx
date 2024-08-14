@@ -1,7 +1,9 @@
 import { coinContext } from "./CoinContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 export function Navbar() {
-  const { setCurrency, currency, allCoins } = useContext(coinContext);
+  const nav = useNavigate();
+  const { setCurrency } = useContext(coinContext);
 
   function currencyHandler(e) {
     switch (e.target.value) {
@@ -26,6 +28,9 @@ export function Navbar() {
           src="cryptocurrency-logo.png"
           alt=""
           className="w-24 h-24 mx-10 cursor-pointer"
+          onClick={() => {
+            nav("/");
+          }}
         />
         <div className="mx-20">
           <select

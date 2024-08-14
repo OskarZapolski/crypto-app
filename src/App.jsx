@@ -1,14 +1,40 @@
 import "./css/App.css";
-import { Navbar } from "./components/navbar";
-import { MainContent } from "./components/mainContent";
-import { useContext } from "react";
-import { coinContext } from "./components/CoinContext";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { AppBody } from "./components/appBody";
+import { createContext, useState } from "react";
+import { CoinInfo } from "./components/coinInfo";
+
+export const CoinCLickedContext = createContext();
 function App() {
+  const [isCoinClicked, setIsCoinClicked] = useState({
+    isClicked: false,
+    coinObject: {},
+  });
+  const value = { isCoinClicked, setIsCoinClicked };
   return (
     <div className="h-screen overflow-x-hidden">
-      <Navbar />
-      <MainContent />
+      <BrowserRouter>
+        <CoinCLickedContext.Provider value={value}>
+          <Routes>
+            <Route path="/" element={<AppBody />} />
+            <Route
+              exact
+              path={`/${isCoinClicked.coinObject.name}`}
+              element={
+                <CoinInfo
+                  name={isCoinClicked.coinObject.name}
+                  logo={isCoinClicked.coinObject.logo}
+                  symbol={isCoinClicked.coinObject.symbol}
+                  currPrice={isCoinClicked.coinObject.currPrice}
+                  id={isCoinClicked.coinObject.id}
+                />
+              }
+            />
+          </Routes>
+        </CoinCLickedContext.Provider>
+      </BrowserRouter>
     </div>
   );
 }

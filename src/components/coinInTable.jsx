@@ -1,6 +1,6 @@
 import { coinContext } from "./CoinContext";
 import { useContext, useEffect } from "react";
-import { CoinCLickedContext } from "./mainContent";
+import { CoinCLickedContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 export function CoinInTable({
@@ -11,8 +11,17 @@ export function CoinInTable({
   lowPrice,
   highPrice,
   symbol,
+  priceChangePercentage,
   id,
 }) {
+  const style = {
+    color:
+      priceChangePercentage > 0
+        ? "rgb(92, 255, 47)"
+        : priceChangePercentage === 0
+        ? "white"
+        : "red",
+  };
   const nav = useNavigate();
   const { currency } = useContext(coinContext);
   const { isCoinClicked, setIsCoinClicked } = useContext(CoinCLickedContext);
@@ -33,17 +42,10 @@ export function CoinInTable({
       </td>
       <td>{name}</td>
       <td>
+        {currency.symbol}
         {currPrice}
-        {currency.symbol}
       </td>
-      <td>
-        {lowPrice}
-        {currency.symbol}
-      </td>
-      <td>
-        {highPrice}
-        {currency.symbol}
-      </td>
+      <td style={style}>{Math.round(priceChangePercentage * 100) / 100}%</td>
     </tr>
   );
 }

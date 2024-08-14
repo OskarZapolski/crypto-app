@@ -7,6 +7,7 @@ export function CoinTable() {
 
   const [coinsToDisplay, setCoinsToDisplay] = useState(allCoins);
   const [displayedCoins, setDisplayedCoins] = useState([]);
+  console.log(allCoins);
 
   const inputRef = useRef();
 
@@ -22,6 +23,7 @@ export function CoinTable() {
             currPrice={coin.current_price}
             lowPrice={coin.low_24h}
             highPrice={coin.high_24h}
+            priceChangePercentage={coin.price_change_percentage_24h}
             symbol={coin.symbol}
             id={coin.id}
           />
@@ -59,8 +61,7 @@ export function CoinTable() {
               <th>Logo</th>
               <th>Name</th>
               <th>Current price</th>
-              <th>Lowest price 24h</th>
-              <th>Highest price 24h</th>
+              <th>Price change percentage 24h</th>
             </tr>
             {displayedCoins}
           </table>
