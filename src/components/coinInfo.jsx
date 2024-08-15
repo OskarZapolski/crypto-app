@@ -39,7 +39,7 @@ export function CoinInfo({ name, logo, currPrice, symbol, id }) {
         <h2 className="text-3xl">
           Current Price: {`${currPrice}${currency.symbol}`}
         </h2>
-        <div className="h-1/3 w-1/2">
+        <div className="h-2/5 w-1/2 mt-10">
           <CandlestickChart historicalData={historicalData} />
         </div>
       </div>

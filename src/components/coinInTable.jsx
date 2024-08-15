@@ -20,7 +20,7 @@ export function CoinInTable({
         ? "rgb(92, 255, 47)"
         : priceChangePercentage === 0
         ? "white"
-        : "red",
+        : "rgb(251, 78, 78)",
   };
   const nav = useNavigate();
   const { currency } = useContext(coinContext);
@@ -42,8 +42,7 @@ export function CoinInTable({
       </td>
       <td>{name}</td>
       <td>
-        {currency.symbol}
-        {currPrice}
+        {currency.symbol} {currPrice}
       </td>
       <td style={style}>{Math.round(priceChangePercentage * 100) / 100}%</td>
     </tr>

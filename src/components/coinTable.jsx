@@ -7,8 +7,9 @@ export function CoinTable() {
 
   const [coinsToDisplay, setCoinsToDisplay] = useState(allCoins);
   const [displayedCoins, setDisplayedCoins] = useState([]);
-  console.log(allCoins);
 
+  const style = { height: displayedCoins.length < 3 && "100vh" };
+  console.log(displayedCoins);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -38,13 +39,18 @@ export function CoinTable() {
 
   function searchHandler() {
     setCoinsToDisplay(
-      allCoins.filter((coin) => coin.id.includes(inputRef.current.value))
+      allCoins.filter((coin) =>
+        coin.id.includes(inputRef.current.value.toLowerCase())
+      )
     );
   }
 
   return (
     <>
-      <div className=" w-screen bg-gradient-to-r from-blue-800 to-violet-700 h-fit pb-52">
+      <div
+        style={style}
+        className=" w-screen bg-gradient-to-r from-blue-800 to-violet-700 h-fit pb-52"
+      >
         <div className="w-screen flex justify-center items-center pt-12">
           <input
             placeholder="search"
