@@ -13,6 +13,7 @@ function App() {
     coinObject: {},
   });
   const value = { isCoinClicked, setIsCoinClicked };
+
   return (
     <div className="h-screen overflow-x-hidden">
       <BrowserRouter>

@@ -28,7 +28,7 @@ export function CandlestickChart({ historicalData }) {
     },
     vAxis: { title: `value in ${currency.name}` },
   };
-  return (
+  return data.length > 2 ? (
     <Chart
       chartType="CandlestickChart"
       data={data}
@@ -36,5 +36,7 @@ export function CandlestickChart({ historicalData }) {
       legendToggle
       options={options}
     />
+  ) : (
+    <p className="text-4xl">LOADING...</p>
   );
 }

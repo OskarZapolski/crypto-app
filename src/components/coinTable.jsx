@@ -9,7 +9,7 @@ export function CoinTable() {
   const [displayedCoins, setDisplayedCoins] = useState([]);
 
   const style = { height: displayedCoins.length < 3 && "100vh" };
-  console.log(displayedCoins);
+
   const inputRef = useRef();
 
   useEffect(() => {
@@ -22,8 +22,6 @@ export function CoinTable() {
             name={coin.name}
             logo={coin.image}
             currPrice={coin.current_price}
-            lowPrice={coin.low_24h}
-            highPrice={coin.high_24h}
             priceChangePercentage={coin.price_change_percentage_24h}
             symbol={coin.symbol}
             id={coin.id}
@@ -69,7 +67,7 @@ export function CoinTable() {
               <th>Current price</th>
               <th>Price change percentage 24h</th>
             </tr>
-            {displayedCoins}
+            {displayedCoins ? displayedCoins : <p>LOADING</p>}
           </table>
         </div>
       </div>
