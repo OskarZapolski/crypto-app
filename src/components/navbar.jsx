@@ -29,7 +29,7 @@ export function Navbar() {
           alt=""
           className="w-24 h-24 mx-10 cursor-pointer"
           onClick={() => {
-            nav("/");
+            nav("/crypto-app");
           }}
         />
         <div className="mx-20">
