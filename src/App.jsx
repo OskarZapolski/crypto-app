@@ -19,10 +19,10 @@ function App() {
       <BrowserRouter>
         <CoinCLickedContext.Provider value={value}>
           <Routes>
-            <Route path="/" element={<AppBody />} />
+            <Route path="/crypto-app/" element={<AppBody />} />
             <Route
               exact
-              path={`/${isCoinClicked.coinObject.name}`}
+              path={`/crypto-app/${isCoinClicked.coinObject.name}`}
               element={
                 <CoinInfo
                   name={isCoinClicked.coinObject.name}
