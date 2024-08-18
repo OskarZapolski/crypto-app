@@ -27,7 +27,7 @@ export function CoinInTable({
   return (
     <tr className="text-center ">
       <td>{number}</td>
-      <Link to={`/${name}`}>
+      <Link to={`/crypto-app/${name}`}>
         <td
           className="flex justify-center"
           onClick={() => {
