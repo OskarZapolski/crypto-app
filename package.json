@@ -6,7 +6,7 @@
   "scripts": {
     "homepage": "https://oskarzapolski.github.io/crypto-app/",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=https://oskarzapolski.github.io/crypto-app/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
